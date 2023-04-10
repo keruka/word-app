@@ -1,25 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const eng = ['apple','apple','banana','banana','chocolate','chocolate'];
+const jap = [,'りんご',,'バナナ',,'チョコレート'];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {i:0};
+  }
+      
+  handleClick() {
+    this.setState({i:this.state.i+1});
+  }
+
+  render() {    
+    return (
+      <div className="App">
+        <button onClick={() => {this.handleClick()}}>○</button>
+        <button onClick={() => {this.handleClick()}}>{eng[this.state.i]}</button>
+        <button onClick={() => {this.handleClick()}}>×</button>
+        <h1>{jap[this.state.i]}</h1>
+      </div>
+    );
+  }
 }
-
 export default App;
